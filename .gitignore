@@ -24,3 +24,6 @@ hs_err_pid*
 
 # thumb files
 *.DS_Store
+
+# ignore IDE specific directories and files
+**/.idea
