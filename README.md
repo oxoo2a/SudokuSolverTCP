@@ -1,7 +1,9 @@
-# SodokuSolverTCP
+# SudokuSolverTCP
 A distributed Sudoko solver via constraint propagation over TCP.
 
 ## Defining the Interface
+
+![Naming Conventions](Assets/Puzzle_Box_Cell.jpg)
 
 ### Process Arguments
 
