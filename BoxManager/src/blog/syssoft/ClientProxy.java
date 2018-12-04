@@ -30,6 +30,8 @@ public class ClientProxy {
                 Address = config[1];
                 Port = config[2];
                 goodclient = true;
+                out.println("OK");
+                out.flush();
             }
         }
     }
@@ -103,7 +105,16 @@ public class ClientProxy {
                 answer = cp.getAddress() + ',' + cp.getPort();
             System.out.printf("ClientProxy for box %s sends \"%s\"\n", Name, answer);
             out.println(answer);
+            out.flush();
         }
     }
 
+    public void close () {
+        try {
+            c.close();
+        }
+        catch (Exception e) {
+            fatal(e,"Error while closing socket");
+        }
+    }
 }

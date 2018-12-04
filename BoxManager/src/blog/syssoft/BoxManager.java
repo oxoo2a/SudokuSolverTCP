@@ -33,6 +33,7 @@ public class BoxManager {
             }
             else {
                 System.out.println("Client with inappropriate initial message tried to connect");
+                cp.close();
             }
         }
 
