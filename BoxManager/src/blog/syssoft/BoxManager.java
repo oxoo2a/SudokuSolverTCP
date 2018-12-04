@@ -25,10 +25,15 @@ public class BoxManager {
             Socket c = server.acceptClient();
             ClientProxy cp = new ClientProxy(c,boxMap);
             clients.put(c,cp);
-            System.out.printf("Box %s at %s and port %s",
-                    cp.getName(),cp.getAddress(),cp.getPort());
-            boxMap.put(cp.getName(),cp);
-            nBoxesConnected++;
+            if (cp.isGoodclient()) {
+                System.out.printf("Box %s at %s and port %s\n",
+                        cp.getName(), cp.getAddress(), cp.getPort());
+                boxMap.put(cp.getName(), cp);
+                nBoxesConnected++;
+            }
+            else {
+                System.out.println("Client with inappropriate initial message tried to connect");
+            }
         }
 
         System.out.print("All 9 boxes are running ... start answering queries");
