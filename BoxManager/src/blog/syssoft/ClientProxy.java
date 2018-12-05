@@ -40,7 +40,10 @@ public class ClientProxy {
                         out.println("Someone else is responsible for this box name");
                 }
                 else {
-                    out.println("Box name <" + Name + " invalid");
+                    if (Name.equals("TEST"))
+                            out.println("OK");
+                    else
+                        out.println("Box name <" + Name + " invalid");
                 }
             }
             else

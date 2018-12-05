@@ -22,7 +22,8 @@ public class BoxManager {
                 "BOX_A7", "BOX_D7", "BOX_G7",
                 "BOX_UL", "BOX_UM", "BOX_UR",
                 "BOX_ML", "BOX_MM", "BOX_MR",
-                "BOX_LL", "BOX_LM", "BOX_LR"
+                "BOX_LL", "BOX_LM", "BOX_LR",
+                "TEST"
         };
         Set<String> possibleBoxnames = Set.of(boxnames);
 
