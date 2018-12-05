@@ -43,7 +43,7 @@ public class BoxManager {
                 nBoxesConnected++;
             }
             else {
-                System.out.println("Client with inappropriate initial message tried to connect");
+                System.out.println("Client with inappropriate initial message or test message tried to connect");
                 cp.close();
             }
         }

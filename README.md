@@ -23,7 +23,7 @@ Der Manager erwartet UTF-8 als Zeichensatz für alle empfangenen Nachrichten und
 
 #### Box -> Manager (Anmelden)
 Box nennt Boxnamen sowie IP-Adresse und Portnummer, unter der sie erreichbar ist: BOX_D4,127.0.0.1,4233
-Der Manager analisiert die Nachricht und schickt entsprechende Fehlermeldungen an den Absender zurück. Der Manager läßt ab sofort nur gültige Boxnamen zu; der übermittelte Boxname wird zu diesem Zweck intern immer in Großbuchstaben dargestellt und gespeichert. Der Manager läßt auch keine Anmeldungen für eine Box zu, für die schon eine Registrierung vorliegt.
+Der Manager analisiert die Nachricht und schickt entsprechende Fehlermeldungen an den Absender zurück. Der Manager läßt ab sofort nur gültige Boxnamen zu; der übermittelte Boxname wird zu diesem Zweck intern immer in Großbuchstaben dargestellt und gespeichert. Der Manager läßt auch keine Anmeldungen für eine Box zu, für die schon eine Registrierung vorliegt. Außerdem versteht der Manager eine Test-Registrierung mit dem Boxnamen TEST, z.B. "TEST,127.0.0.1,4242". Der Manager überprüft diese Testnachrichten ganz normal und gibt im Fehlerfall die entsprechende Meldung zurück bzw. OK, eine Registrierung dieser Verbindung findet jedoch nicht statt, insbesondere wird die TCP-Verbindung dabei wie im Fehlerfall geschlossen.
 
 #### Box -> Manger (Query)
 Eine Box will die Adresse einer anderen Box wissen:
