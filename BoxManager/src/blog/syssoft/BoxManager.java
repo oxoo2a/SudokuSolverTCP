@@ -4,6 +4,7 @@ import java.net.*;
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class BoxManager {
 
@@ -15,6 +16,16 @@ public class BoxManager {
             System.exit(-1);
         }
 
+        String[] boxnames = {
+                "BOX_A1", "BOX_D1", "BOX_G1",
+                "BOX_A4", "BOX_D4", "BOX_G4",
+                "BOX_A7", "BOX_D7", "BOX_G7",
+                "BOX_UL", "BOX_UM", "BOX_UR",
+                "BOX_ML", "BOX_MM", "BOX_MR",
+                "BOX_LL", "BOX_LM", "BOX_LR"
+        };
+        Set<String> possibleBoxnames = Set.of(boxnames);
+
         int port = Integer.parseInt(args[0]);
 
         TCPServer server = new TCPServer(port);
@@ -23,7 +34,7 @@ public class BoxManager {
 
         while (nBoxesConnected < 9) {
             Socket c = server.acceptClient();
-            ClientProxy cp = new ClientProxy(c,boxMap);
+            ClientProxy cp = new ClientProxy(c,boxMap,possibleBoxnames);
             clients.put(c,cp);
             if (cp.isGoodclient()) {
                 System.out.printf("Box %s at %s and port %s\n",

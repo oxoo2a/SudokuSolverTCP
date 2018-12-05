@@ -5,6 +5,12 @@ A distributed Sudoko solver via constraint propagation over TCP.
 
 ![Naming Conventions](Assets/Puzzle_Box_Cell.jpg)
 
+Zusätzlich zu den im Bild angegebenen Namen für Boxen versteht der Manager positionsbasierte Namen:
+
+BOX_UL BOX_UM BOX_UR
+BOX_ML BOX_MM BOX_MR
+BOX_LL BOX_LM BOX_LR
+
 ### Process Arguments
 
 - Which box (e.g. BOX_A1, BOX_D4, ...)
@@ -13,13 +19,17 @@ A distributed Sudoko solver via constraint propagation over TCP.
 
 ### Message Format
 
+Der Manager erwartet UTF-8 als Zeichensatz für alle empfangenen Nachrichten und versendet auch in diesem Zeichensatz.
+
 #### Box -> Manager (Anmelden)
 Box nennt Boxnamen sowie IP-Adresse und Portnummer, unter der sie erreichbar ist: BOX_D4,127.0.0.1,4233
+Der Manager analisiert die Nachricht und schickt entsprechende Fehlermeldungen an den Absender zurück. Der Manager läßt ab sofort nur gültige Boxnamen zu; der übermittelte Boxname wird zu diesem Zweck intern immer in Großbuchstaben dargestellt und gespeichert. Der Manager läßt auch keine Anmeldungen für eine Box zu, für die schon eine Registrierung vorliegt.
 
 #### Box -> Manger (Query)
 Eine Box will die Adresse einer anderen Box wissen:
 - Query: Boxname
 - Antwort: IP-Adresse bzw DNS-Name, Portnummer
+Die Antwort wird verzögert, bis dem BoxManager alle 9 Boxen bekannt sind!
 
 Anfragende Box wartet auf die Antwort und macht anschließend ein Connect an die übermittelte Adresse.
 
