@@ -39,7 +39,7 @@ Anfragende Box wartet auf die Antwort und macht anschließend ein Connect an die
 #### Box -> Manager (Finished)
 Alle Zellen in der Box sind besetzt. Die Box schickt das gesamte Ergebnis an den Manager. Um diese Nachricht einfach von einer Query zu unterscheiden, muß die Box diese Nachricht mit dem konstanten String RESULT beginnen: "RESULT,Boxname,1,4,3,2,6,7,5,9,8" (von links oben zeilenweise nach rechts unten).
 
-Der Manager versteht diese Nachricht im Moment noch nicht, ich bin aber dabei. Der Manager terminiert, wenn er von allen 9 Boxen eine RESULT-Nachricht erhalten hat. Vorher gibt er das Gesamtergebnis am Terminal aus.
+Der Manager terminiert, wenn er von allen 9 Boxen eine RESULT-Nachricht erhalten hat. Vorher gibt er das Gesamtergebnis - im Moment noch etwas häßlich - am Terminal aus.
 
 #### Manager/Box -> Box (Feierabend)
 Nachricht enthält den konstanten String "FEIERABEND". Eine Box, die FEIERABEND schickt den FEIERABEND an alle ihr bekannten Nachbarboxen und terminert anschließend selber.
