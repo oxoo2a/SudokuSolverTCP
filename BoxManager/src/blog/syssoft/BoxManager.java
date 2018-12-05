@@ -1,7 +1,6 @@
 package blog.syssoft;
 
 import java.net.*;
-import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -38,7 +37,7 @@ public class BoxManager {
             ClientProxy cp = new ClientProxy(c,boxMap,possibleBoxnames);
             clients.put(c,cp);
             if (cp.isGoodclient()) {
-                System.out.printf("Box %s at %s and port %s\n",
+                System.out.printf("Box %s at %s and port %s registered\n",
                         cp.getName(), cp.getAddress(), cp.getPort());
                 boxMap.put(cp.getName(), cp);
                 nBoxesConnected++;
