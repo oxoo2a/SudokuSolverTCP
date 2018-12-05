@@ -107,24 +107,44 @@ public class ClientProxy {
     }
 
     public void start() {
-        Thread t = new Thread(() -> {
+        t = new Thread(() -> {
             handleClient();
         });
         t.start();
     }
 
+    public void join () {
+        try {
+            t.join();
+        } catch (Exception e) {
+            fatal(e,"Unable to join a thread");
+        }
+    }
+    
     private void handleClient() {
         while (true) {
             String message = readLine();
             System.out.printf("ClientProxy for box %s received \"%s\"\n", Name, message);
-            ClientProxy cp = boxMap.get(message);
-            String answer = "Requested box not found";
-            if (cp != null)
-                answer = cp.getAddress() + ',' + cp.getPort();
-            System.out.printf("ClientProxy for box %s sends \"%s\"\n", Name, answer);
-            out.println(answer);
-            out.flush();
+            message = message.toUpperCase();
+            if (!message.startsWith("RESULT,")) {
+                ClientProxy cp = boxMap.get(message);
+                String answer = "Requested box not found";
+                if (cp != null)
+                    answer = cp.getAddress() + ',' + cp.getPort();
+                System.out.printf("ClientProxy for box %s sends \"%s\"\n", Name, answer);
+                out.println(answer);
+            }
+            else {
+                result = message;
+                break;
+            }
         }
+    }
+
+    private String result;
+
+    public String getResult() {
+        return result;
     }
 
     public void close () {

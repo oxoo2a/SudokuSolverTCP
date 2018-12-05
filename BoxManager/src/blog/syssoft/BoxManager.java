@@ -48,10 +48,16 @@ public class BoxManager {
             }
         }
 
-        System.out.print("All 9 boxes are running ... start answering queries");
-
+        System.out.println("All 9 boxes are running ... start answering queries");
         for (Map.Entry<String,ClientProxy> b : boxMap.entrySet()) {
             b.getValue().start();
+        }
+
+        System.out.println("And the results are:");
+        for (Map.Entry<String,ClientProxy> b : boxMap.entrySet()) {
+            ClientProxy cp = b.getValue();
+            cp.join();
+            System.out.println(cp.getResult());
         }
     }
 
