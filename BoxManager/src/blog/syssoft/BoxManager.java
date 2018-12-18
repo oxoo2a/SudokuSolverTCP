@@ -57,23 +57,18 @@ public class BoxManager {
         for (Map.Entry<String,ClientProxy> b : boxMap.entrySet()) {
             ClientProxy cp = b.getValue();
             cp.join();
-            String[] resString = cp.getResult().split(",", 3);
-
-            // resolve result string to values
-            int[] values = new int[9];
-            for (int i=0; i < resString[2].length(); i++)
-                values[i] = resString[2].charAt(i) - '0';
+            String[] resString = cp.getResult().split(",", 11);
 
             System.out.printf("" +
                             "##### " + resString[1] + " #####\n" +
                             "╭─────┬─────┬─────╮\n" +
-                            "│  %d  │  %d  │  %d  │\n" +
+                            "│  %s  │  %s  │  %s  │\n" +
                             "├─────┼─────┼─────┤\n" +
-                            "│  %d  │  %d  │  %d  │\n" +
+                            "│  %s  │  %s  │  %s  │\n" +
                             "├─────┼─────┼─────┤\n" +
-                            "│  %d  │  %d  │  %d  │\n" +
+                            "│  %s  │  %s  │  %s  │\n" +
                             "╰─────┴─────┴─────╯\n"
-                    , values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7], values[8]);
+                    , resString[2], resString[3], resString[4], resString[5], resString[6], resString[7], resString[8], resString[9], resString[10]);
         }
     }
 
