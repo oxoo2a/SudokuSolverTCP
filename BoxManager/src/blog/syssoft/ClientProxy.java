@@ -34,23 +34,23 @@ public class ClientProxy {
                     Port = config[2];
                     if (!boxMap.containsKey(Name)) {
                         goodclient = true;
-                        out.println("OK");
+                        out.println("OK\n");
                     }
                     else
-                        out.println("Someone else is responsible for this box name");
+                        out.println("Someone else is responsible for this box name\n");
                 }
                 else {
                     if (Name.equals("TEST"))
-                            out.println("OK");
+                            out.println("OK\n");
                     else
-                        out.println("Box name <" + Name + " invalid");
+                        out.println("Box name <" + Name + " invalid\n");
                 }
             }
             else
-                out.println("Format Boxname,IP,Port expected");
+                out.println("Format Boxname,IP,Port expected\n");
         }
         else
-            out.println("Empty string received");
+            out.println("Empty string received\n");
     }
 
     public SocketAddress getRemoteSocketAddress () {
